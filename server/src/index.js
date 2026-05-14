@@ -86,9 +86,18 @@ function resolveStaticRoot() {
 }
 
 const staticRoot = resolveStaticRoot();
-app.use(express.static(staticRoot));
 
 app.get("/", (_req, res) => {
+  const indexPath = path.join(staticRoot, "index.html");
+  try {
+    if (fs.existsSync(indexPath)) {
+      res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+      res.sendFile(path.resolve(indexPath));
+      return;
+    }
+  } catch (e) {
+    console.error("[static] index send failed", e);
+  }
   res.type("html").send(`
 <!doctype html>
 <html lang="ru">
@@ -131,6 +140,18 @@ app.get("/", (_req, res) => {
 </html>
   `.trim());
 });
+
+app.use(
+  express.static(staticRoot, {
+    etag: true,
+    lastModified: true,
+    setHeaders(res, filepath) {
+      if (filepath.endsWith(".html")) {
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+      }
+    },
+  })
+);
 
 app.get("/api/health", async (_req, res) => {
   const r = await query("select 1 as ok");
