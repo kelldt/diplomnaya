@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { config } from "./config.js";
@@ -53,7 +54,38 @@ app.use(
 );
 app.use(express.json({ limit: "1mb" }));
 
-const staticRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
+function resolveStaticRoot() {
+  const srcDir = path.dirname(fileURLToPath(import.meta.url));
+  const candidates = [];
+  if (process.env.STATIC_ROOT) {
+    candidates.push(path.resolve(process.env.STATIC_ROOT));
+  }
+  candidates.push(path.resolve(srcDir, "..", ".."));
+  candidates.push(path.resolve(process.cwd(), ".."));
+  candidates.push(path.resolve(process.cwd()));
+
+  const seen = new Set();
+  for (const dir of candidates) {
+    const norm = path.normalize(dir);
+    if (seen.has(norm)) continue;
+    seen.add(norm);
+    const indexPath = path.join(norm, "index.html");
+    try {
+      if (fs.existsSync(indexPath)) {
+        console.log(`[static] root=${norm}`);
+        return norm;
+      }
+    } catch {}
+  }
+
+  const fallback = path.resolve(srcDir, "..", "..");
+  console.error(
+    `[static] index.html not found — check Render "Root Directory" is EMPTY and the repo contains index.html + src/. Using fallback: ${fallback}`
+  );
+  return fallback;
+}
+
+const staticRoot = resolveStaticRoot();
 app.use(express.static(staticRoot));
 
 app.get("/", (_req, res) => {
