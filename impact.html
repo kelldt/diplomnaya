@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Антропогенный фактор: влияние промышленности и ключевые источники нагрузки."
+    />
+    <title>Влияние промышленности • Антропогенный фактор</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <script>
+      try {
+        if (localStorage.getItem("geoeco_auth_token")) {
+          document.documentElement.classList.add("auth-session");
+        }
+      } catch (_) {}
+    </script>
+    <a class="skip-link" href="#content">К содержимому</a>
+
+    <header class="site-header" data-sticky>
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="./index.html" aria-label="На главную">
+            <span class="brand__text">Геоэкология • Водные ресурсы</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Меню"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 7h14M5 12h14M5 17h14"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+
+                    <nav class="nav" aria-label="Основная навигация" data-nav>
+            <div class="nav__primary">
+              <a class="nav__link" href="./index.html">Главная</a>
+              <div class="nav-dropdown" data-nav-dropdown>
+                <button
+                  type="button"
+                  class="nav-dropdown__btn"
+                  data-nav-dropdown-btn
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-controls="nav-dropdown-panel"
+                  id="nav-dropdown-btn"
+                >
+                  <span>Материалы</span>
+                  <svg class="nav-dropdown__chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div
+                  class="nav-dropdown__panel"
+                  id="nav-dropdown-panel"
+                  role="menu"
+                  hidden
+                  data-nav-dropdown-panel
+                >
+                  <a class="nav-dropdown__item" role="menuitem" href="./about.html">Основы</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./freshwater.html">Кризис пресных вод</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./ocean.html">Океан</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./impact.html">Фактор</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./solutions.html">Решения</a>
+                </div>
+              </div>
+              <a class="nav__link" href="./analytics.html">Аналитика</a>
+              <a class="nav__link" href="./contacts.html">Контакты</a>
+            </div>
+            <span class="auth-trigger">
+              <span class="auth-trigger__user" data-auth-user hidden></span>
+              <a class="nav__link" href="#auth" data-auth-open>Вход</a>
+              <a class="nav__link" href="#logout" data-auth-logout hidden>Выход</a>
+            </span>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-backdrop" hidden data-nav-backdrop></div>
+
+    <main id="content">
+      <div class="container">
+        <h1 class="page-title">Влияние промышленности</h1>
+        <p class="section__lead" style="max-width: 80ch">
+          Антропогенная нагрузка редко приходит “одним каналом”. Здесь собраны
+          четыре типовых источника, которые чаще всего меняют качество воды и
+          состояние экосистем — от водосбора до моря.
+        </p>
+
+        <section class="section section--tight" aria-label="Источники нагрузки">
+          <p class="flip-hint">Нажмите на карточку, чтобы перевернуть</p>
+          <div class="flip-grid">
+            <article class="flip-card">
+              <div class="flip-card__inner" tabindex="0">
+                <div class="flip-card__face flip-card__front">
+                  <div class="flip-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M7 20V10l5-3 5 3v10"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9 13h6"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M8 10l4-6 4 6"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flip-card__title">Агрохимия</div>
+                </div>
+                <div class="flip-card__face flip-card__back">
+                  <div class="flip-card__back-title">Агрохимия</div>
+                  <p class="flip-card__text">
+                    Удобрения и пестициды дают диффузный сток. Риск — эвтрофикация,
+                    “цветение”, дефицит кислорода и токсичные эффекты в пищевых
+                    цепях.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="flip-card">
+              <div class="flip-card__inner" tabindex="0">
+                <div class="flip-card__face flip-card__front">
+                  <div class="flip-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M7 3h10v6H7V3Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9 9v12m6-12v12"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M5 21h14"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flip-card__title">Нефть</div>
+                </div>
+                <div class="flip-card__face flip-card__back">
+                  <div class="flip-card__back-title">Нефть</div>
+                  <p class="flip-card__text">
+                    Плёнки и эмульсии ухудшают газообмен, поражают биоту и
+                    закрепляются в осадках. Последствия зависят от типа нефти,
+                    температур и гидродинамики.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="flip-card">
+              <div class="flip-card__inner" tabindex="0">
+                <div class="flip-card__face flip-card__front">
+                  <div class="flip-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M7 7c3-3 7-3 10 0"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M6 11c4-3 8-3 12 0"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M8 15c3-2 5-2 8 0"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M12 19h0"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flip-card__title">Микропластик</div>
+                </div>
+                <div class="flip-card__face flip-card__back">
+                  <div class="flip-card__back-title">Микропластик</div>
+                  <p class="flip-card__text">
+                    Частицы удерживают загрязнители на поверхности, переносятся
+                    течениями и попадают в организмы. Важно различать источники:
+                    износ шин, текстильные волокна, упаковка.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="flip-card">
+              <div class="flip-card__inner" tabindex="0">
+                <div class="flip-card__face flip-card__front">
+                  <div class="flip-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M4 20V4h16v16"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 8h8M8 12h8M8 16h5"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flip-card__title">Стоки</div>
+                </div>
+                <div class="flip-card__face flip-card__back">
+                  <div class="flip-card__back-title">Стоки</div>
+                  <p class="flip-card__text">
+                    Коммунальные и промышленные стоки повышают органическую
+                    нагрузку и приносят специфические вещества. Нужны контроль,
+                    очистка и привязка мер к источникам.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="muted" style="margin-top: 10px">
+            Подсказка: наведи мышь или сфокусируй карточку (Tab) — и она
+            перевернётся.
+          </p>
+        </section>
+
+        <section class="section" aria-label="Как нагрузка превращается в эффект">
+          <div class="section__grid">
+            <div>
+              <h2 class="section__title">Нагрузка → перенос → эффект</h2>
+              <p class="section__lead">
+                Чтобы “фактор” не оставался абстракцией, полезно мыслить цепочкой:
+                источник на территории → путь переноса → зона накопления → видимый
+                эффект в водоёме и биоте.
+              </p>
+
+              <div class="bar-chart" aria-label="Иллюстративная диаграмма факторов">
+                <div class="bar-chart__grid">
+                  <div class="bar">
+                    <div class="bar__k">Диффузный сток</div>
+                    <div class="bar__meter" aria-hidden="true">
+                      <div class="bar__fill" style="--h: 78%"></div>
+                    </div>
+                    <div class="bar__v">Высокий</div>
+                    <div class="bar__d">сложно локализовать</div>
+                  </div>
+
+                  <div class="bar">
+                    <div class="bar__k">Точечные сбросы</div>
+                    <div class="bar__meter" aria-hidden="true">
+                      <div class="bar__fill" style="--h: 56%"></div>
+                    </div>
+                    <div class="bar__v">Средний</div>
+                    <div class="bar__d">легче контролировать</div>
+                  </div>
+
+                  <div class="bar">
+                    <div class="bar__k">Перенос</div>
+                    <div class="bar__meter" aria-hidden="true">
+                      <div class="bar__fill" style="--h: 44%"></div>
+                    </div>
+                    <div class="bar__v">Изменчив</div>
+                    <div class="bar__d">зависит от режима</div>
+                  </div>
+
+                  <div class="bar">
+                    <div class="bar__k">Накопление</div>
+                    <div class="bar__meter" aria-hidden="true">
+                      <div class="bar__fill" style="--h: 66%"></div>
+                    </div>
+                    <div class="bar__v">Долгий след</div>
+                    <div class="bar__d">осадки, донные отложения</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <figure class="media-frame" style="margin: 0">
+                <img
+                  class="media-frame__img"
+                  src="./src/assets/photos/04.jpg"
+                  alt="Промышленная зона у русла реки зимой — точка антропогенной нагрузки на сток"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="muted" style="margin-top: 10px; max-width: 60ch">
+                Пример нагрузки: без нормализации производственных стоков качество воды ниже по
+                течению резко зависит от режима выпусков и производительности очистки.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer">
+          <div class="footer__brand">
+            <div class="footer__title">Геоэкология • Водные ресурсы</div>
+            <div class="footer__meta muted">
+              Учебный проект • Версия: черновик • Обновлено: <span data-today></span>
+            </div>
+          </div>
+
+          <div class="footer__cols">
+            <div class="footer__col">
+              <div class="footer__k">Навигация</div>
+              <a class="footer__link" href="./index.html">Главная</a>
+              <a class="footer__link" href="./about.html">Основы дисциплины</a>
+              <a class="footer__link" href="./freshwater.html">Кризис пресных вод</a>
+              <a class="footer__link" href="./ocean.html">Загрязнение океанов</a>
+              <a class="footer__link" href="./impact.html">Антропогенный фактор</a>
+              <a class="footer__link" href="./solutions.html">Решения и защита</a>
+              <a class="footer__link" href="./contacts.html">Контакты</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__k">Атрибуция</div>
+              <div class="muted">Иллюстрация: Unsplash.</div>
+            </div>
+            <div class="footer__col">
+              <div class="footer__k">Авторство</div>
+              <div class="muted">© <span id="year"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./src/scripts/core.js" defer></script>
+    <script src="./src/scripts/site-config.js" defer></script>
+    <script src="./src/scripts/geoeco-api.js" defer></script>
+    <script src="./src/scripts/auth-ui.js" defer></script>
+    <script src="./src/scripts/assistant.js" defer></script>
+    <script>
+      document.querySelectorAll(".flip-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          card.classList.toggle("is-flipped");
+        });
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            card.classList.toggle("is-flipped");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

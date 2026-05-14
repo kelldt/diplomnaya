@@ -1,0 +1,127 @@
+.flip-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.flip-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 180ms ease;
+}
+
+.flip-card:hover,
+.flip-card:focus-within {
+  border-color: rgba(11, 19, 43, 0.3);
+}
+
+.flip-card__inner {
+  position: relative;
+  min-height: 200px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.flip-card__face {
+  position: absolute;
+  inset: 0;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flip-card__front {
+  background: #fff;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 200ms ease-in;
+}
+
+.flip-card__back {
+  background: #fff;
+  color: var(--fg);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 200ms ease-out 200ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:hover .flip-card__front {
+    transform: scaleX(0);
+    transition: transform 200ms ease-in;
+  }
+  .flip-card:hover .flip-card__back {
+    transform: scaleX(1);
+    transition: transform 200ms ease-out 200ms;
+  }
+}
+
+.flip-card.is-flipped .flip-card__front,
+.flip-card:focus-within .flip-card__front {
+  transform: scaleX(0);
+  transition: transform 200ms ease-in;
+}
+
+.flip-card.is-flipped .flip-card__back,
+.flip-card:focus-within .flip-card__back {
+  transform: scaleX(1);
+  transition: transform 200ms ease-out 200ms;
+}
+
+.flip-card__icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.flip-card__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.flip-card__back-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  color: var(--fg);
+}
+
+.flip-card__text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.flip-hint {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  padding: 6px 0 2px;
+  display: none;
+}
+
+@media (hover: none) {
+  .flip-hint {
+    display: block;
+  }
+}
+
+@media (max-width: 940px) {
+  .flip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .flip-grid {
+    grid-template-columns: 1fr;
+  }
+}

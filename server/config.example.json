@@ -1,0 +1,11 @@
+{
+  "port": 3001,
+  "databaseUrl": "postgresql://user:password@host.neon.tech/neondb?sslmode=require",
+  "jwtSecret": "generate-a-long-random-string",
+  "corsOrigin": "https://your-service.onrender.com",
+  "gigachat": {
+    "scope": "GIGACHAT_API_PERS",
+    "credentials": null,
+    "verifySsl": true
+  }
+}

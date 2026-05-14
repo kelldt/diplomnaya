@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Теоретическая база: основы геоэкологии как дисциплины."
+    />
+    <title>Основы дисциплины • Геоэкология</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <script>
+      try {
+        if (localStorage.getItem("geoeco_auth_token")) {
+          document.documentElement.classList.add("auth-session");
+        }
+      } catch (_) {}
+    </script>
+    <a class="skip-link" href="#content">К содержимому</a>
+
+    <header class="site-header" data-sticky>
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="./index.html" aria-label="На главную">
+            <span class="brand__text">Геоэкология • Водные ресурсы</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Меню"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 7h14M5 12h14M5 17h14"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+
+                    <nav class="nav" aria-label="Основная навигация" data-nav>
+            <div class="nav__primary">
+              <a class="nav__link" href="./index.html">Главная</a>
+              <div class="nav-dropdown" data-nav-dropdown>
+                <button
+                  type="button"
+                  class="nav-dropdown__btn"
+                  data-nav-dropdown-btn
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-controls="nav-dropdown-panel"
+                  id="nav-dropdown-btn"
+                >
+                  <span>Материалы</span>
+                  <svg class="nav-dropdown__chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div
+                  class="nav-dropdown__panel"
+                  id="nav-dropdown-panel"
+                  role="menu"
+                  hidden
+                  data-nav-dropdown-panel
+                >
+                  <a class="nav-dropdown__item" role="menuitem" href="./about.html">Основы</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./freshwater.html">Кризис пресных вод</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./ocean.html">Океан</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./impact.html">Фактор</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./solutions.html">Решения</a>
+                </div>
+              </div>
+              <a class="nav__link" href="./analytics.html">Аналитика</a>
+              <a class="nav__link" href="./contacts.html">Контакты</a>
+            </div>
+            <span class="auth-trigger">
+              <span class="auth-trigger__user" data-auth-user hidden></span>
+              <a class="nav__link" href="#auth" data-auth-open>Вход</a>
+              <a class="nav__link" href="#logout" data-auth-logout hidden>Выход</a>
+            </span>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-backdrop" hidden data-nav-backdrop></div>
+
+    <main id="content">
+      <div class="container">
+        <h1 class="page-title">Основы дисциплины</h1>
+
+        <section class="section section--tight" aria-label="Иллюстрация: водосбор">
+          <figure
+            class="media-frame"
+            style="margin: 0"
+            data-parallax
+            data-parallax-depth="0.3"
+            data-parallax-scale="1.3"
+          >
+            <img
+              class="media-frame__img"
+              src="./src/assets/photos/08.jpg"
+              alt="Крупная водная поверхность: масштаб водохранилища водосборного узла как объект гидрографии и баланса"
+              loading="eager"
+            />
+          </figure>
+        </section>
+
+        <article class="article" aria-label="Теоретическая база">
+          <div class="article__columns">
+            <p>
+              Геоэкология рассматривает взаимодействие природных геосистем и
+              общества, связывая рельеф, почвы, воды, биоту и техногенные
+              воздействия в единую причинно‑следственную картину.
+            </p>
+            <p>
+              В центре внимания — пространственная неоднородность и масштабы:
+              локальные процессы в пределах водосбора, региональные миграции
+              вещества, а также долговременные тренды, заметные на десятилетиях.
+            </p>
+
+            <blockquote class="pull-quote">
+              <p>
+                «Природа знает границы лишь по водоразделам, а не по линиям на
+                карте».
+              </p>
+              <cite>— перефразировано по В. И. Вернадскому</cite>
+            </blockquote>
+
+            <p>
+              Ключевая единица анализа для водных тем — бассейн. Он объединяет
+              источники вещества и энергии, пути переноса (поверхностный и
+              подземный сток) и зоны аккумуляции (поймы, водохранилища, донные
+              отложения).
+            </p>
+            <p>
+              Базовые вопросы дисциплины звучат строго: что является источником
+              воздействия, как оно переносится, где и в какой форме накапливается,
+              какие есть пороги устойчивости системы и какие меры реально
+              снижают риск.
+            </p>
+
+            <p>
+              Для водных ресурсов дисциплина важна тем, что позволяет
+              интерпретировать качество воды не как “набор показателей”, а как
+              отражение процессов в бассейне: источников, переноса и накопления.
+            </p>
+            <p>
+              Практическая задача — выстроить мониторинг и управление так, чтобы
+              меры были привязаны к источникам воздействия и уместны для масштаба
+              проблемы: от точечных сбросов до диффузного стока с территорий.
+            </p>
+            <p>
+              Мини‑словарь для следующих разделов: геосистема, водосбор, фоновое
+              состояние, техногенная нагрузка, самоочищение, уязвимость, риск,
+              адаптация. Эти понятия помогут держать текст проверяемым и
+              сопоставимым.
+            </p>
+            <p>
+              Дальше эта страница будет расширяться: определения, схемы связей,
+              типология нагрузок, критерии качества воды и список источников.
+            </p>
+          </div>
+
+          <section class="section section--tight" aria-label="Ключевые понятия">
+            <h2 class="section__title">Ключевые понятия</h2>
+            <div class="key-grid">
+              <div class="key">
+                <div class="key__t">Бассейновый подход</div>
+                <div class="key__d muted">
+                  Управление водой через территорию водосбора, а не административные
+                  границы.
+                </div>
+              </div>
+              <div class="key">
+                <div class="key__t">Диффузная нагрузка</div>
+                <div class="key__d muted">
+                  Рассеянные источники (поля, дороги, застройка), которые сложно
+                  “поймать” одной точкой контроля.
+                </div>
+              </div>
+              <div class="key">
+                <div class="key__t">Самоочищение</div>
+                <div class="key__d muted">
+                  Комплекс процессов разбавления, разложения и сорбции, снижающих
+                  концентрации загрязнителей.
+                </div>
+              </div>
+              <div class="key">
+                <div class="key__t">Уязвимость</div>
+                <div class="key__d muted">
+                  Насколько система чувствительна к нагрузке с учётом рельефа,
+                  почв, гидрологии и режима.
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <section class="section section--tight" aria-label="Цепочка анализа">
+          <h2 class="section__title">Цепочка: от территории до решений</h2>
+          <p class="section__lead" style="max-width: 78ch">
+            Геоэкологический разбор строится линейно: сначала определяется
+            система (водосбор), затем фиксируются источники, прослеживается
+            перенос и накопление — и только тогда формулируются меры.
+          </p>
+          <div class="flow-diagram" role="img" aria-label="Схема: водосбор → источники → перенос → накопление → мониторинг → меры">
+            <svg viewBox="0 0 960 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <style>
+                  .cb{fill:#fff;stroke:rgba(11,19,43,.15);stroke-width:1.5}
+                  .ct{fill:#0b132b;font-family:Inter,system-ui,Arial;font-size:13px;font-weight:600}
+                  .cs{fill:rgba(11,19,43,.6);font-family:Inter,system-ui,Arial;font-size:10px}
+                  .ca{fill:none;stroke:#2a9d8f;stroke-width:2.5;stroke-linecap:round}
+                  .cah{fill:#2a9d8f}
+                </style>
+              </defs>
+
+              <rect class="cb" x="8" y="22" width="135" height="72" rx="6"/>
+              <text class="ct" x="75" y="54" text-anchor="middle">Территория</text>
+              <text class="cs" x="75" y="72" text-anchor="middle">водосбор</text>
+
+              <path class="ca" d="M143 58H162"/>
+              <polygon class="cah" points="162,54 170,58 162,62"/>
+
+              <rect class="cb" x="170" y="22" width="135" height="72" rx="6"/>
+              <text class="ct" x="237" y="54" text-anchor="middle">Источники</text>
+              <text class="cs" x="237" y="72" text-anchor="middle">нагрузки</text>
+
+              <path class="ca" d="M305 58H324"/>
+              <polygon class="cah" points="324,54 332,58 324,62"/>
+
+              <rect class="cb" x="332" y="22" width="135" height="72" rx="6"/>
+              <text class="ct" x="399" y="54" text-anchor="middle">Перенос</text>
+              <text class="cs" x="399" y="72" text-anchor="middle">сток, фильтрация</text>
+
+              <path class="ca" d="M467 58H486"/>
+              <polygon class="cah" points="486,54 494,58 486,62"/>
+
+              <rect class="cb" x="494" y="22" width="135" height="72" rx="6"/>
+              <text class="ct" x="561" y="54" text-anchor="middle">Накопление</text>
+              <text class="cs" x="561" y="72" text-anchor="middle">дно, пойма</text>
+
+              <path class="ca" d="M629 58H648"/>
+              <polygon class="cah" points="648,54 656,58 648,62"/>
+
+              <rect class="cb" x="656" y="22" width="135" height="72" rx="6"/>
+              <text class="ct" x="723" y="54" text-anchor="middle">Мониторинг</text>
+              <text class="cs" x="723" y="72" text-anchor="middle">пробы, данные</text>
+
+              <path class="ca" d="M791 58H810"/>
+              <polygon class="cah" points="810,54 818,58 810,62"/>
+
+              <rect class="cb" x="818" y="22" width="135" height="72" rx="6" style="stroke:rgba(42,157,143,.45)"/>
+              <text class="ct" x="885" y="54" text-anchor="middle" style="fill:#2a9d8f">Меры</text>
+              <text class="cs" x="885" y="72" text-anchor="middle">управление</text>
+            </svg>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer">
+          <div class="footer__brand">
+            <div class="footer__title">Геоэкология • Водные ресурсы</div>
+            <div class="footer__meta muted">
+              Учебный проект • Версия: черновик • Обновлено: <span data-today></span>
+            </div>
+          </div>
+
+          <div class="footer__cols">
+            <div class="footer__col">
+              <div class="footer__k">Навигация</div>
+              <a class="footer__link" href="./index.html">Главная</a>
+              <a class="footer__link" href="./about.html">Основы дисциплины</a>
+              <a class="footer__link" href="./freshwater.html">Кризис пресных вод</a>
+              <a class="footer__link" href="./ocean.html">Загрязнение океанов</a>
+              <a class="footer__link" href="./impact.html">Антропогенный фактор</a>
+              <a class="footer__link" href="./solutions.html">Решения и защита</a>
+              <a class="footer__link" href="./contacts.html">Контакты</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__k">Материалы</div>
+              <div class="muted">Иллюстрация: Unsplash.</div>
+            </div>
+            <div class="footer__col">
+              <div class="footer__k">Авторство</div>
+              <div class="muted">© <span id="year"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./src/scripts/core.js" defer></script>
+    <script src="./src/scripts/parallax.js" defer></script>
+    <script src="./src/scripts/site-config.js" defer></script>
+    <script src="./src/scripts/geoeco-api.js" defer></script>
+    <script src="./src/scripts/auth-ui.js" defer></script>
+    <script src="./src/scripts/assistant.js" defer></script>
+  </body>
+</html>

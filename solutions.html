@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Решения и защита водных ресурсов: технологии очистки и меры снижения нагрузки."
+    />
+    <title>Технологии спасения • Решения и защита</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <script>
+      try {
+        if (localStorage.getItem("geoeco_auth_token")) {
+          document.documentElement.classList.add("auth-session");
+        }
+      } catch (_) {}
+    </script>
+    <a class="skip-link" href="#content">К содержимому</a>
+
+    <header class="site-header" data-sticky>
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="./index.html" aria-label="На главную">
+            <span class="brand__text">Геоэкология • Водные ресурсы</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Меню"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 7h14M5 12h14M5 17h14"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+
+                    <nav class="nav" aria-label="Основная навигация" data-nav>
+            <div class="nav__primary">
+              <a class="nav__link" href="./index.html">Главная</a>
+              <div class="nav-dropdown" data-nav-dropdown>
+                <button
+                  type="button"
+                  class="nav-dropdown__btn"
+                  data-nav-dropdown-btn
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-controls="nav-dropdown-panel"
+                  id="nav-dropdown-btn"
+                >
+                  <span>Материалы</span>
+                  <svg class="nav-dropdown__chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div
+                  class="nav-dropdown__panel"
+                  id="nav-dropdown-panel"
+                  role="menu"
+                  hidden
+                  data-nav-dropdown-panel
+                >
+                  <a class="nav-dropdown__item" role="menuitem" href="./about.html">Основы</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./freshwater.html">Кризис пресных вод</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./ocean.html">Океан</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./impact.html">Фактор</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./solutions.html">Решения</a>
+                </div>
+              </div>
+              <a class="nav__link" href="./analytics.html">Аналитика</a>
+              <a class="nav__link" href="./contacts.html">Контакты</a>
+            </div>
+            <span class="auth-trigger">
+              <span class="auth-trigger__user" data-auth-user hidden></span>
+              <a class="nav__link" href="#auth" data-auth-open>Вход</a>
+              <a class="nav__link" href="#logout" data-auth-logout hidden>Выход</a>
+            </span>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-backdrop" hidden data-nav-backdrop></div>
+
+    <main id="content">
+      <div class="container">
+        <h1 class="page-title">Технологии спасения</h1>
+        <p class="section__lead" style="max-width: 82ch">
+          "Выход есть", если решения сопоставимы масштабу проблемы. Ниже —
+          базовые технологии и подходы к очистке вод, оформленные как строгий
+          рабочий список.
+        </p>
+
+        <section class="section section--tight" aria-label="Схема очистки">
+          <div class="diagram-header">
+            <div>
+              <h2 class="section__title">Логика очистки (схема)</h2>
+              <p class="section__lead">
+                Последовательность стадий: снять взвеси → снизить органику →
+                работать со следовыми концентрациями. Прокрутите для зума,
+                тяните для перемещения.
+              </p>
+            </div>
+            <div class="diagram-toolbar">
+              <button class="icon-btn" data-dz-in aria-label="Увеличить">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+              <button class="icon-btn" data-dz-out aria-label="Уменьшить">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+              <button class="icon-btn" data-dz-reset aria-label="Сбросить масштаб">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4v6h6M20 20v-6h-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 10c0-3 3-6 8-6 3 0 5.5 1.5 7 4M20 14c0 3-3 6-8 6-3 0-5.5-1.5-7-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="muted" style="font-size:12px">Колёсико · тяните для перемещения</span>
+            </div>
+          </div>
+
+          <div class="diagram-viewport" data-dz-viewport>
+            <div class="flow-diagram diagram-canvas" data-dz-canvas role="img" aria-label="Схема стадий очистки воды">
+              <svg viewBox="0 0 980 280" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <style>
+                    .box{fill:#ffffff;stroke:rgba(11,19,43,.15);stroke-width:2}
+                    .t{fill:#0b132b;font-family:Inter,system-ui,Segoe UI,Arial;font-size:17px}
+                    .s{fill:rgba(11,19,43,.72);font-family:Inter,system-ui,Segoe UI,Arial;font-size:13px}
+                    .a{fill:none;stroke:#2a9d8f;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+                  </style>
+                </defs>
+
+                <rect class="box" x="18" y="88" width="200" height="104" rx="7" />
+                <text class="t" x="118" y="126" text-anchor="middle">Стоки</text>
+                <text class="s" x="118" y="150" text-anchor="middle">источник</text>
+
+                <rect class="box" x="258" y="48" width="220" height="82" rx="7" />
+                <text class="t" x="368" y="82" text-anchor="middle">Механика</text>
+                <text class="s" x="368" y="108" text-anchor="middle">решётки, отстой</text>
+
+                <rect class="box" x="258" y="154" width="220" height="82" rx="7" />
+                <text class="t" x="368" y="188" text-anchor="middle">Биология</text>
+                <text class="s" x="368" y="214" text-anchor="middle">активный ил</text>
+
+                <rect class="box" x="528" y="88" width="240" height="104" rx="7" />
+                <text class="t" x="648" y="126" text-anchor="middle">Сорбция / мембраны</text>
+                <text class="s" x="648" y="150" text-anchor="middle">следовые примеси</text>
+
+                <rect class="box" x="804" y="88" width="160" height="104" rx="7" />
+                <text class="t" x="884" y="126" text-anchor="middle">Водоём</text>
+                <text class="s" x="884" y="150" text-anchor="middle">качество воды</text>
+
+                <path class="a flow-diagram__stroke" d="M218 140H258" />
+                <path class="a flow-diagram__stroke" d="M478 89H528" />
+                <path class="a flow-diagram__stroke" d="M478 195H528" />
+                <path class="a flow-diagram__stroke" d="M768 140H804" />
+
+                <path class="a" d="M242 140l-12-7v14l12-7Z" />
+                <path class="a" d="M512 89l-12-7v14l12-7Z" />
+                <path class="a" d="M512 195l-12-7v14l12-7Z" />
+                <path class="a" d="M792 140l-12-7v14l12-7Z" />
+
+                <path class="a" d="M218 140C238 112 246 98 258 89" opacity=".55" />
+                <path class="a" d="M218 140C238 170 246 186 258 195" opacity=".55" />
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--tight" aria-label="Методы очистки">
+          <div class="accordion" data-accordion>
+            <div class="accordion__item">
+              <button class="accordion__btn" type="button" data-acc-btn>
+                <span class="accordion__title">Механическая очистка</span>
+                <span class="accordion__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion__panel" data-acc-panel>
+                <div class="accordion__content">
+                  Решётки, песколовки, отстойники. Снимают взвешенные вещества и
+                  крупный мусор, уменьшая нагрузку на следующие ступени.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button class="accordion__btn" type="button" data-acc-btn>
+                <span class="accordion__title">Биологическая очистка</span>
+                <span class="accordion__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion__panel" data-acc-panel>
+                <div class="accordion__content">
+                  Аэротенки, биофильтры, активный ил. Снижает органику и
+                  биогенные элементы, если режим и нагрузка стабильны.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button class="accordion__btn" type="button" data-acc-btn>
+                <span class="accordion__title">Сорбция и мембраны</span>
+                <span class="accordion__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion__panel" data-acc-panel>
+                <div class="accordion__content">
+                  Угольные фильтры, ионообмен, ультрафильтрация/обратный осмос.
+                  Эффективно для следовых концентраций, но требует контроля
+                  регенерации и утилизации.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button class="accordion__btn" type="button" data-acc-btn>
+                <span class="accordion__title">Натуральные решения</span>
+                <span class="accordion__icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion__panel" data-acc-panel>
+                <div class="accordion__content">
+                  Биоплато, буферные полосы, восстановление пойм и болот. Работает
+                  как "медленная инфраструктура": удержание стока, фильтрация,
+                  снижение пиков загрязнения.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer">
+          <div class="footer__brand">
+            <div class="footer__title">Геоэкология • Водные ресурсы</div>
+            <div class="footer__meta muted">
+              Учебный проект • Версия: черновик • Обновлено: <span data-today></span>
+            </div>
+          </div>
+
+          <div class="footer__cols">
+            <div class="footer__col">
+              <div class="footer__k">Навигация</div>
+              <a class="footer__link" href="./index.html">Главная</a>
+              <a class="footer__link" href="./about.html">Основы дисциплины</a>
+              <a class="footer__link" href="./freshwater.html">Кризис пресных вод</a>
+              <a class="footer__link" href="./ocean.html">Загрязнение океанов</a>
+              <a class="footer__link" href="./impact.html">Антропогенный фактор</a>
+              <a class="footer__link" href="./solutions.html">Решения и защита</a>
+              <a class="footer__link" href="./contacts.html">Контакты</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__k">Авторство</div>
+              <div class="muted">© <span id="year"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./src/scripts/core.js" defer></script>
+    <script src="./src/scripts/site-config.js" defer></script>
+    <script src="./src/scripts/geoeco-api.js" defer></script>
+    <script src="./src/scripts/solutions.js" defer></script>
+    <script src="./src/scripts/auth-ui.js" defer></script>
+    <script>
+      (() => {
+        const vp = document.querySelector("[data-dz-viewport]");
+        const canvas = document.querySelector("[data-dz-canvas]");
+        if (!vp || !canvas) return;
+
+        let sc = 1, tx = 0, ty = 0;
+        const MIN = 0.5, MAX = 4;
+
+        const apply = (anim) => {
+          if (anim) canvas.style.transition = "transform 220ms ease";
+          canvas.style.transform = `translate(${tx}px,${ty}px) scale(${sc})`;
+          if (anim) setTimeout(() => (canvas.style.transition = ""), 230);
+        };
+
+        vp.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          const r = vp.getBoundingClientRect();
+          const cx = e.clientX - r.left, cy = e.clientY - r.top;
+          const factor = e.deltaY > 0 ? 0.88 : 1.14;
+          const nsc = Math.min(MAX, Math.max(MIN, sc * factor));
+          tx = cx - (cx - tx) * (nsc / sc);
+          ty = cy - (cy - ty) * (nsc / sc);
+          sc = nsc;
+          apply(false);
+        }, { passive: false });
+
+        let drag = false, lx = 0, ly = 0;
+        vp.addEventListener("mousedown", (e) => {
+          drag = true; lx = e.clientX; ly = e.clientY;
+          vp.style.cursor = "grabbing";
+        });
+        window.addEventListener("mousemove", (e) => {
+          if (!drag) return;
+          tx += e.clientX - lx; ty += e.clientY - ly;
+          lx = e.clientX; ly = e.clientY;
+          apply(false);
+        });
+        window.addEventListener("mouseup", () => {
+          drag = false; vp.style.cursor = "grab";
+        });
+
+        let touches = null, pinchDist = 0;
+        vp.addEventListener("touchstart", (e) => {
+          e.preventDefault();
+          if (e.touches.length === 1) {
+            touches = [e.touches[0].clientX, e.touches[0].clientY];
+          } else if (e.touches.length === 2) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            pinchDist = Math.hypot(dx, dy);
+            touches = null;
+          }
+        }, { passive: false });
+        vp.addEventListener("touchmove", (e) => {
+          e.preventDefault();
+          if (e.touches.length === 1 && touches) {
+            tx += e.touches[0].clientX - touches[0];
+            ty += e.touches[0].clientY - touches[1];
+            touches = [e.touches[0].clientX, e.touches[0].clientY];
+            apply(false);
+          } else if (e.touches.length === 2 && pinchDist) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const d = Math.hypot(dx, dy);
+            sc = Math.min(MAX, Math.max(MIN, sc * (d / pinchDist)));
+            pinchDist = d;
+            apply(false);
+          }
+        }, { passive: false });
+        vp.addEventListener("touchend", () => { touches = null; pinchDist = 0; });
+
+        const zoomBtn = (factor) => {
+          const r = vp.getBoundingClientRect();
+          const cx = r.width / 2, cy = r.height / 2;
+          const nsc = Math.min(MAX, Math.max(MIN, sc * factor));
+          tx = cx - (cx - tx) * (nsc / sc);
+          ty = cy - (cy - ty) * (nsc / sc);
+          sc = nsc;
+          apply(true);
+        };
+        document.querySelector("[data-dz-in]")?.addEventListener("click", () => zoomBtn(1.3));
+        document.querySelector("[data-dz-out]")?.addEventListener("click", () => zoomBtn(0.77));
+        document.querySelector("[data-dz-reset]")?.addEventListener("click", () => {
+          sc = 1; tx = 0; ty = 0; apply(true);
+        });
+      })();
+    </script>
+    <script src="./src/scripts/assistant.js" defer></script>
+  </body>
+</html>

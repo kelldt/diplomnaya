@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Панель администратора: мониторинг, источники данных, обращения."
+    />
+    <title>Админ-панель • Геоэкология</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <script>
+      try {
+        if (localStorage.getItem("geoeco_auth_token")) {
+          document.documentElement.classList.add("auth-session");
+        }
+      } catch (_) {}
+    </script>
+    <a class="skip-link" href="#content">К содержимому</a>
+
+    <header class="site-header" data-sticky>
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="./index.html" aria-label="На главную">
+            <span class="brand__text">Геоэкология • Водные ресурсы</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Меню"
+            aria-expanded="false"
+            data-nav-toggle
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 7h14M5 12h14M5 17h14"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+
+                    <nav class="nav" aria-label="Основная навигация" data-nav>
+            <div class="nav__primary">
+              <a class="nav__link" href="./index.html">Главная</a>
+              <div class="nav-dropdown" data-nav-dropdown>
+                <button
+                  type="button"
+                  class="nav-dropdown__btn"
+                  data-nav-dropdown-btn
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-controls="nav-dropdown-panel"
+                  id="nav-dropdown-btn"
+                >
+                  <span>Материалы</span>
+                  <svg class="nav-dropdown__chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div
+                  class="nav-dropdown__panel"
+                  id="nav-dropdown-panel"
+                  role="menu"
+                  hidden
+                  data-nav-dropdown-panel
+                >
+                  <a class="nav-dropdown__item" role="menuitem" href="./about.html">Основы</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./freshwater.html">Кризис пресных вод</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./ocean.html">Океан</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./impact.html">Фактор</a>
+                  <a class="nav-dropdown__item" role="menuitem" href="./solutions.html">Решения</a>
+                </div>
+              </div>
+              <a class="nav__link" href="./analytics.html">Аналитика</a>
+              <a class="nav__link" href="./contacts.html">Контакты</a>
+            </div>
+            <span class="auth-trigger">
+              <span class="auth-trigger__user" data-auth-user hidden></span>
+              <a class="nav__link" href="#auth" data-auth-open>Вход</a>
+              <a class="nav__link" href="#logout" data-auth-logout hidden>Выход</a>
+            </span>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-backdrop" hidden data-nav-backdrop></div>
+
+    <main id="content">
+      <div class="container admin">
+        <h1 class="admin__title">Админ-панель</h1>
+        <p class="admin__lead">
+          Сводка по мониторингу, просмотр последних измерений, учёт источников
+          данных с пометками и обработка обращений с сайта.
+        </p>
+
+        <div class="admin-load" data-el="admin-load">Проверяем доступ…</div>
+        <div class="admin-err" data-el="admin-err" hidden role="alert"></div>
+
+        <div class="admin-gate" data-el="admin-gate" hidden>
+          <div class="admin-gate__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+              <path
+                d="M12 15v2M5 11V8a7 7 0 1 1 14 0v3M5 18h14"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="admin-gate__title">Нужен вход</div>
+          <p class="admin-gate__text">
+            Войдите под учётной записью администратора. Ссылка «Админ» появится
+            в шапке после входа.
+          </p>
+          <button class="btn btn--accent" type="button" data-admin-login>
+            Войти
+          </button>
+        </div>
+
+        <div class="admin-gate" data-el="admin-forbidden" hidden>
+          <div class="admin-gate__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+              <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+              <path d="M8 8l8 8" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+          <div class="admin-gate__title">Доступ запрещён</div>
+          <p class="admin-gate__text">
+            У этой учётной записи нет прав администратора. Обратитесь к
+            владельцу проекта или выполните скрипт <code>db:seed-admin</code> на
+            сервере.
+          </p>
+          <a class="btn btn--accent" href="./cabinet.html">В личный кабинет</a>
+        </div>
+
+        <div class="admin-dash" data-el="admin-dash" hidden>
+          <div class="admin-toolbar">
+            <div class="admin-tabs" role="tablist" aria-label="Разделы админки">
+              <button
+                class="admin-tab is-active"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                data-admin-tab="overview"
+              >
+                Обзор
+              </button>
+              <button
+                class="admin-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-admin-tab="feedback"
+              >
+                Обращения
+              </button>
+              <button
+                class="admin-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-admin-tab="users"
+              >
+                Пользователи
+              </button>
+              <button
+                class="admin-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-admin-tab="data"
+              >
+                Данные
+              </button>
+            </div>
+          </div>
+
+          <section
+            class="admin-panel"
+            data-admin-panel="overview"
+            aria-label="Обзор"
+          >
+            <div class="admin-grid-stats">
+              <div class="admin-stat" data-stat="users">
+                <div class="admin-stat__k">Пользователи</div>
+                <div class="admin-stat__v" data-bind="count">0</div>
+                <div class="admin-stat__hint">Зарегистрировано в БД</div>
+              </div>
+              <div class="admin-stat" data-stat="feedback">
+                <div class="admin-stat__k">Обращения</div>
+                <div class="admin-stat__v" data-bind="count">0</div>
+                <div class="admin-stat__hint">Сообщения с формы</div>
+              </div>
+              <div class="admin-stat" data-stat="measurements">
+                <div class="admin-stat__k">Измерения</div>
+                <div class="admin-stat__v" data-bind="count">0</div>
+                <div class="admin-stat__hint">Строк мониторинга</div>
+              </div>
+              <div class="admin-stat" data-stat="waterBodies">
+                <div class="admin-stat__k">Водные объекты</div>
+                <div class="admin-stat__v" data-bind="count">0</div>
+                <div class="admin-stat__hint">Справочник</div>
+              </div>
+              <div class="admin-stat" data-stat="metrics">
+                <div class="admin-stat__k">Показатели</div>
+                <div class="admin-stat__v" data-bind="count">0</div>
+                <div class="admin-stat__hint">Метрики качества</div>
+              </div>
+              <div class="admin-stat" data-stat="dataSources">
+                <div class="admin-stat__k">Источники</div>
+                <div class="admin-stat__v" data-bind="count">0</div>
+                <div class="admin-stat__hint">Ссылки на данные</div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="admin-panel"
+            data-admin-panel="feedback"
+            hidden
+            aria-label="Обращения"
+          >
+            <div class="admin-card">
+              <div class="admin-card__title">Последние обращения</div>
+              <p class="admin-subtle">
+                Текст из формы «Контакты». Удаление необратимо.
+              </p>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Дата</th>
+                      <th>Кто</th>
+                      <th>Текст</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-feedback-body></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="admin-panel"
+            data-admin-panel="users"
+            hidden
+            aria-label="Пользователи"
+          >
+            <div class="admin-card">
+              <div class="admin-card__title">Учётные записи</div>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Имя</th>
+                      <th>Email</th>
+                      <th>Роль</th>
+                      <th>Регистрация</th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-users-body></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="admin-panel"
+            data-admin-panel="data"
+            hidden
+            aria-label="Данные мониторинга"
+          >
+            <div class="admin-card">
+              <div class="admin-card__title">Последние измерения</div>
+              <p class="admin-subtle">
+                Срез таблицы <code>measurement</code>: водный объект, показатель,
+                дата отбора, значение и источник.
+              </p>
+              <div class="admin-table-wrap">
+                <table class="admin-table admin-table--monitoring">
+                  <thead>
+                    <tr>
+                      <th>Дата</th>
+                      <th>Объект</th>
+                      <th>Показатель</th>
+                      <th>Значение</th>
+                      <th>Источник</th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-monitoring-body></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card__title">Источники данных</div>
+              <p class="admin-subtle">
+                Внутренние пометки для курсовой (методика, ссылка на паспорт
+                отчёта и т.д.). Сохраняются в поле <code>notes</code>.
+              </p>
+              <div class="admin-table-wrap">
+                <table class="admin-table admin-table--sources">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Название</th>
+                      <th>URL</th>
+                      <th>Использований</th>
+                      <th>Примечания</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-sources-body></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer">
+          <div class="footer__brand">
+            <div class="footer__title">Геоэкология • Водные ресурсы</div>
+            <div class="footer__meta muted">
+              Админ-панель • <span data-today></span>
+            </div>
+          </div>
+
+          <div class="footer__cols">
+            <div class="footer__col">
+              <div class="footer__k">Навигация</div>
+              <a class="footer__link" href="./index.html">Главная</a>
+              <a class="footer__link" href="./cabinet.html">Личный кабинет</a>
+              <a class="footer__link" href="./admin.html">Админ</a>
+              <a class="footer__link" href="./contacts.html">Контакты</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__k">Подсказка</div>
+              <div class="muted">
+                Права задаются полем <code>is_admin</code>. Раздел «Данные» не
+                меняет числовые измерения — только текстовые пометки к источникам.
+              </div>
+            </div>
+            <div class="footer__col">
+              <div class="footer__k">Авторство</div>
+              <div class="muted">© <span id="year"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./src/scripts/core.js" defer></script>
+    <script src="./src/scripts/site-config.js" defer></script>
+    <script src="./src/scripts/geoeco-api.js" defer></script>
+    <script src="./src/scripts/auth-ui.js" defer></script>
+    <script src="./src/scripts/admin.js" defer></script>
+    <script src="./src/scripts/assistant.js" defer></script>
+  </body>
+</html>

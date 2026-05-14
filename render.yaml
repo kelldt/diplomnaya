@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: geoeco-water
+    runtime: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: GIGACHAT_CREDENTIALS
+        sync: false
